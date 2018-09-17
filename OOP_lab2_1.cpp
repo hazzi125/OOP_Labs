@@ -98,6 +98,7 @@ void Swap(list *&head, int x1, int x2) {
 }
 
 int main() {
+	srand(time(NULL));
 	list *head, *p;
 	head = NULL;
 	
@@ -107,7 +108,7 @@ int main() {
 	cout << "\n";
 	int A[n];
 	for(int i = 1; i <= n; i++) {
-		A[i] = i;
+		A[i] = rand() % 100;
 		cout << A[i] << " ";
 	}
 	cout << "\n";
@@ -127,9 +128,30 @@ int main() {
 			}
 		}
 	}
+
+	cout << "\nList with full squads:\n\n";
 	PrintList(head);
-	cout << "\n\nList with full squads:\n";
-	
+	int size = Size(head);
+	cout << "\n" << size << endl;
+	if (size > 1) {
+		int i = 1, j;
+		list *buf;
+		for(p = head; p->next != NULL; p = p->next) {
+			j = i + 1;
+			for(buf = p->next; buf != NULL; buf = buf->next) {
+				if(p->data == buf->data) {
+					Del(head, j);
+				}
+				j++;
+			}
+			cout << p->data << " ";
+			i++;
+		}
+	}
+	cout << "\nList without copy squads:\n\n";
+	PrintList(head);
+	size = Size(head);
+	cout << "\n" << size << endl;
 	system("pause");
 	return 0;
 }
