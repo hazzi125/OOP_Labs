@@ -5,17 +5,21 @@ using namespace std;
 
 int main() {
 	int a;
-	cin >> a;
-	TNum obj1(a);
+	//char c[100];
+	bool flag1;
+	TNum *head = NULL, *p;
 	
-	char c[100];
-	cin >> c;
-	TStr obj2(c);
-    
-    cout << endl;
-    obj1.Output();
-    cout << endl;
-	obj2.Output();
+	do {
+		cout << "Enter elem: ";
+		cin >> a;
+		p = new TNum(a, head);
+		cout << "Do you want to add more elems? 1/0 ";
+		cin >> flag1;
+		system("cls");
+	} while(flag1);
+	
+	cout << "This stack:\n";
+	p->PrintList(head);
 	system("pause");
 	return 0;
 }

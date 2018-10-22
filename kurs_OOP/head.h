@@ -4,28 +4,34 @@ using namespace std;
 
 class TList {
 protected:
-	int data;
-	char str[100] = "---";
 	TList *next;
-
-public:
-	void Output() {
-		cout << "! " << data << "\n";
-		cout << "! " << str << "\n";
-	}
 };
 
 class TNum: public TList {
+private:
+	int data;
+	
 public:
-	TNum(int d) {
+	TNum(int d, TNum *&head) {
 		data = d;
+		this->next = head;
+		head = this;
+	}
+	
+	void PrintList(TNum *&head) {
+		TNum *p;
+		for(p = head; p != NULL; p = p->next) 
+			cout << p->data << " ";
+		cout << endl;
 	}
 };
 
 class TStr: public TList {
+private:
+	char str[100];
+	
 public:
 	TStr(char s[]) {
-		data = 0;
 		strcpy(str, s);
 	}
 };
