@@ -2,36 +2,53 @@
 #include <cstring>
 using namespace std;
 
-class TList {
+class TStack {
 protected:
-	TList *next;
-};
-
-class TNum: public TList {
-private:
 	int data;
+	TStack *next;
 	
 public:
-	TNum(int d, TNum *&head) {
+	TStack(int d, TStack *&head) {
 		data = d;
 		this->next = head;
 		head = this;
 	}
 	
-	void PrintList(TNum *&head) {
-		TNum *p;
+	void PrintStack(TStack *&head) {
+		TStack *p;
 		for(p = head; p != NULL; p = p->next) 
 			cout << p->data << " ";
 		cout << endl;
 	}
 };
 
-class TStr: public TList {
-private:
-	char str[100];
+class TQueue {
+protected:
+	int data;
+	TQueue *next;
 	
 public:
-	TStr(char s[]) {
-		strcpy(str, s);
+	TQueue(int d, TQueue *&head, TQueue *&tail) {
+		data = d;
+		this->next = NULL;
+		if(head) {
+			tail->next = this;	
+		}
+		
+		else {
+			head = this;
+		}
+		tail = this;
+	}
+	
+	void PrintQueue(TQueue *&head) {
+		TQueue *p;
+		for(p = head; p != NULL; p = p->next) 
+			cout << p->data << " ";
+		cout << endl;
 	}
 };
+
+
+
+
