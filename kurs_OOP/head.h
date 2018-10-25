@@ -1,54 +1,22 @@
+#ifndef HEAD_H
+#define HEAD_H
 #include <iostream>
 #include <cstring>
 using namespace std;
 
-class TStack {
-protected:
+struct Node {
 	int data;
-	TStack *next;
-	
-public:
-	TStack(int d, TStack *&head) {
-		data = d;
-		this->next = head;
-		head = this;
-	}
-	
-	void PrintStack(TStack *&head) {
-		TStack *p;
-		for(p = head; p != NULL; p = p->next) 
-			cout << p->data << " ";
-		cout << endl;
-	}
+	Node *next, *prew;
 };
 
 class TQueue {
-protected:
-	int data;
-	TQueue *next;
-	
+private:
+	Node *head, *tail;
 public:
-	TQueue(int d, TQueue *&head, TQueue *&tail) {
-		data = d;
-		this->next = NULL;
-		if(head) {
-			tail->next = this;	
-		}
-		
-		else {
-			head = this;
-		}
-		tail = this;
-	}
-	
-	void PrintQueue(TQueue *&head) {
-		TQueue *p;
-		for(p = head; p != NULL; p = p->next) 
-			cout << p->data << " ";
-		cout << endl;
-	}
+	TQueue();
+	void Add(int d);
+	void Show(bool flag);
 };
 
-
-
+#endif
 

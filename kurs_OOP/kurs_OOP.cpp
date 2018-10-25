@@ -1,74 +1,79 @@
-#include "head.h"
 #include <iostream>
 #include <cstring>
+#include "head.h"
+#include "methods.cpp"
 using namespace std;
 
-int main() {/*
-	int a;
-	//char c[100];
-	bool flag1;
-	TNum *head = NULL, *p;
-	
-	do {
-		cout << "Enter elem: ";
-		cin >> a;
-		p = new TNum(a, head);
-		cout << "Do you want to add more elems? 1/0 ";
-		cin >> flag1;
-		system("cls");
-	} while(flag1);
-	
-	cout << "This stack:\n";
-	p->PrintList(head);*/
-	
+int main() {	
 	int d, flag;
-	TStack *head1, *pS;
-	TQueue *head2, *tail, *pQ;
-	head1 = NULL;
-	head2 = tail = NULL;
+	//TStack *head1, *pS;
+	//TQueue *head2, *tail, *pQ;
+	//head1 = NULL;
+	TQueue pQ;
 	
 	for( ; ; ) {
 	    cout << "1. Stack\n";
-	    cout << "2. Queue\n";
-	    cout << "3. PrintStack\n";
-	    cout << "4. PrintQueue\n";
-	    cout << "5. Exit\n\n";
+	    cout << "2. Queue\n\n";
+	    cout << "3. Print queue from the beginning\n";
+	    cout << "4. Print queue from the end\n\n";
+	    cout << "5. DeleteStack\n";
+	    cout << "6. DeleteQueue\n";
+	    cout << "\n7. Exit\n\n";
 	    
 	    cin >> flag;
-	    switch(flag) {
+	    switch(flag) {/*
 	    	case 1: {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
 	    		pS = new TStack(d, head1);
 				break;
-			}
+			}*/
 			
 			case 2: {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
-	    		pQ = new TQueue(d, head2, tail);
+	    		pQ.Add(d);
 				break;
 			}
 			
 			case 3: {
 				system("cls");
-				cout << "Your stack:\n";
-				pS->PrintStack(head1);
+				cout << "Your queue (from beginning):\n";
+				pQ.Show(1);
 				system("pause");
 				break;
 			}
 			
 			case 4: {
 				system("cls");
-				cout << "Your queue:\n";
-				pQ->PrintQueue(head2);
+				cout << "Your queue (from end):\n";
+				pQ.Show(0);
+				system("pause");
+				break;
+			}
+			/*
+			case 5: {
+				system("cls");
+				//((YoungS*)head1)->Del();
+				pS->Del_S(head1);
+				cout << "Your del stack:\n";
+				pS->PrintStack(head1);
 				system("pause");
 				break;
 			}
 			
-			case 5: {
+			case 6: {
+				system("cls");
+				pQ->Del_Q(head2);
+				cout << "Your del queue:\n";
+				pQ->PrintQueue(head2);
+				system("pause");
+				break;
+			}*/
+			
+			case 7: {
 				return 0;
 				break;
 			}
