@@ -1,37 +1,33 @@
+#ifndef HEAD_H
+#define HEAD_H
 #include <iostream>
 #include <cstring>
 using namespace std;
 
-class TList {
-protected:
-	TList *next;
-};
-
-class TNum: public TList {
-private:
+struct Node {
 	int data;
-	
-public:
-	TNum(int d, TNum *&head) {
-		data = d;
-		this->next = head;
-		head = this;
-	}
-	
-	void PrintList(TNum *&head) {
-		TNum *p;
-		for(p = head; p != NULL; p = p->next) 
-			cout << p->data << " ";
-		cout << endl;
-	}
+	Node *next, *prew;
 };
 
-class TStr: public TList {
+class TQueue {
 private:
-	char str[100];
-	
+	Node *head, *tail;
 public:
-	TStr(char s[]) {
-		strcpy(str, s);
-	}
+	TQueue();
+	void Add(int d);
+	void Show(bool flag);
+	void Del(bool flag);
 };
+
+class TStack {
+private:
+	Node *head, *tail;
+public:
+	TStack();
+	void Add(int d);
+	void Show(bool flag);
+	void Del(bool flag);
+};
+
+#endif
+
