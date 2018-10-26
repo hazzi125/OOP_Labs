@@ -4,33 +4,26 @@
 #include "methods.cpp"
 using namespace std;
 
-int main() {	
+int main() {
+	system("color 0A");
 	int d, flag;
-	//TStack *head1, *pS;
-	//TQueue *head2, *tail, *pQ;
-	//head1 = NULL;
 	TQueue pQ;
+	TStack pS;
 	
 	for( ; ; ) {
-	    cout << "1. Stack\n";
-	    cout << "2. Queue\n\n";
-	    cout << "3. Print queue from the beginning\n";
-	    cout << "4. Print queue from the end\n\n";
-	    cout << "5. DeleteStack\n";
-	    cout << "6. DeleteQueue\n";
-	    cout << "\n7. Exit\n\n";
+	    cout << "1. Queue\n";
+	    cout << "2. Stack\n\n";
+	    cout << "3. Print queue\n";
+	    cout << "4. Print stack\n\n";
+	    cout << "5. Delete queue from the beginning\n";
+	    cout << "6. Delete queue from the end\n";
+	    cout << "7. Delete stack from the beginning\n";
+	    cout << "8. Delete stack from the end\n";
+	    cout << "\n9. Exit\n\n";
 	    
 	    cin >> flag;
-	    switch(flag) {/*
+	    switch(flag) {
 	    	case 1: {
-	    		system("cls");
-	    		cout << "Enter elem: ";
-	    		cin >> d;
-	    		pS = new TStack(d, head1);
-				break;
-			}*/
-			
-			case 2: {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
@@ -38,42 +31,91 @@ int main() {
 				break;
 			}
 			
+	    	case 2: {
+	    		system("cls");
+	    		cout << "Enter elem: ";
+	    		cin >> d;
+	    		pS.Add(d);
+				break;
+			}
+			
 			case 3: {
 				system("cls");
-				cout << "Your queue (from beginning):\n";
+				cout << "Your queue:\n";
+				cout << "From beginning: ";
 				pQ.Show(1);
+				cout << "From end:       ";
+				pQ.Show(0);
+				cout << "\n";
 				system("pause");
 				break;
 			}
 			
 			case 4: {
 				system("cls");
-				cout << "Your queue (from end):\n";
-				pQ.Show(0);
+				cout << "Your stack:\n";
+				cout << "From beginning: ";
+				pS.Show(1);
+				cout << "From end:       ";
+				pS.Show(0);
+				cout << "\n";
 				system("pause");
 				break;
 			}
-			/*
+			
 			case 5: {
 				system("cls");
-				//((YoungS*)head1)->Del();
-				pS->Del_S(head1);
-				cout << "Your del stack:\n";
-				pS->PrintStack(head1);
+				pQ.Del(1);
+				cout << "Your headless queue:\n";
+				cout << "From beginning: ";
+				pQ.Show(1);
+				cout << "From end:       ";
+				pQ.Show(0);
+				cout << "\n";
 				system("pause");
 				break;
 			}
 			
 			case 6: {
 				system("cls");
-				pQ->Del_Q(head2);
-				cout << "Your del queue:\n";
-				pQ->PrintQueue(head2);
+				pQ.Del(0);
+				cout << "Your tailless queue:\n";
+				cout << "From beginning: ";
+				pQ.Show(1);
+				cout << "From end:       ";
+				pQ.Show(0);
+				cout << "\n";
 				system("pause");
 				break;
-			}*/
+			}
 			
 			case 7: {
+				system("cls");
+				pS.Del(1);
+				cout << "Your headless stack:\n";
+				cout << "From beginning: ";
+				pS.Show(1);
+				cout << "From end:       ";
+				pS.Show(0);
+				cout << "\n";
+				system("pause");
+				break;
+			}
+			
+			case 8: {
+				system("cls");
+				pS.Del(0);
+				cout << "Your tailless stack:\n";
+				cout << "From beginning: ";
+				pS.Show(1);
+				cout << "From end:       ";
+				pS.Show(0);
+				cout << "\n";
+				system("pause");
+				break;
+			}
+			
+			case 9: {
 				return 0;
 				break;
 			}

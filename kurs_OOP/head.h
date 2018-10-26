@@ -16,6 +16,17 @@ public:
 	TQueue();
 	void Add(int d);
 	void Show(bool flag);
+	void Del(bool flag);
+};
+
+class TStack {
+private:
+	Node *head, *tail;
+public:
+	TStack();
+	void Add(int d);
+	void Show(bool flag);
+	void Del(bool flag);
 };
 
 #endif
