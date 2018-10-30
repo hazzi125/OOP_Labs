@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <graphics.h>
 #include "head.h"
 #include "methods.cpp"
 using namespace std;
@@ -41,13 +42,8 @@ int main() {
 			
 			case 3: {
 				system("cls");
-				cout << "Your queue:\n";
-				cout << "From beginning: ";
-				pQ.Show(1);
-				cout << "From end:       ";
-				pQ.Show(0);
-				cout << "\n";
-				system("pause");
+			    cout << "Your queue:\n";
+				pQ.Show();
 				break;
 			}
 			
@@ -67,12 +63,12 @@ int main() {
 				system("cls");
 				pQ.Del(1);
 				cout << "Your headless queue:\n";
-				cout << "From beginning: ";
+				/*cout << "From beginning: ";
 				pQ.Show(1);
 				cout << "From end:       ";
-				pQ.Show(0);
+				pQ.Show(0);*/
+				pQ.Show();
 				cout << "\n";
-				system("pause");
 				break;
 			}
 			
@@ -80,12 +76,12 @@ int main() {
 				system("cls");
 				pQ.Del(0);
 				cout << "Your tailless queue:\n";
-				cout << "From beginning: ";
+				/*cout << "From beginning: ";
 				pQ.Show(1);
 				cout << "From end:       ";
-				pQ.Show(0);
+				pQ.Show(0);*/
+				pQ.Show();
 				cout << "\n";
-				system("pause");
 				break;
 			}
 			
