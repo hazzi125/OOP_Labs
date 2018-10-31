@@ -7,7 +7,9 @@ using namespace std;
 
 int main() {
 	system("color 0A");
-	int d, flag;
+	initwindow(800, 600);
+	int d;
+	char flag;
 	TQueue pQ;
 	TStack pS;
 	
@@ -24,7 +26,7 @@ int main() {
 	    
 	    cin >> flag;
 	    switch(flag) {
-	    	case 1: {
+	    	case '1': {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
@@ -32,7 +34,7 @@ int main() {
 				break;
 			}
 			
-	    	case 2: {
+	    	case '2': {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
@@ -40,78 +42,55 @@ int main() {
 				break;
 			}
 			
-			case 3: {
+			case '3': {
 				system("cls");
 			    cout << "Your queue:\n";
 				pQ.Show();
 				break;
 			}
 			
-			case 4: {
+			case '4': {
 				system("cls");
 				cout << "Your stack:\n";
-				cout << "From beginning: ";
-				pS.Show(1);
-				cout << "From end:       ";
-				pS.Show(0);
-				cout << "\n";
-				system("pause");
+				pS.Show();
 				break;
 			}
 			
-			case 5: {
+			case '5': {
 				system("cls");
 				pQ.Del(1);
 				cout << "Your headless queue:\n";
-				/*cout << "From beginning: ";
-				pQ.Show(1);
-				cout << "From end:       ";
-				pQ.Show(0);*/
 				pQ.Show();
 				cout << "\n";
 				break;
 			}
 			
-			case 6: {
+			case '6': {
 				system("cls");
 				pQ.Del(0);
 				cout << "Your tailless queue:\n";
-				/*cout << "From beginning: ";
-				pQ.Show(1);
-				cout << "From end:       ";
-				pQ.Show(0);*/
 				pQ.Show();
 				cout << "\n";
 				break;
 			}
 			
-			case 7: {
+			case '7': {
 				system("cls");
 				pS.Del(1);
 				cout << "Your headless stack:\n";
-				cout << "From beginning: ";
-				pS.Show(1);
-				cout << "From end:       ";
-				pS.Show(0);
-				cout << "\n";
-				system("pause");
+				pS.Show();
 				break;
 			}
 			
-			case 8: {
+			case '8': {
 				system("cls");
-				pS.Del(0);
+				pS.Del(1);
 				cout << "Your tailless stack:\n";
-				cout << "From beginning: ";
-				pS.Show(1);
-				cout << "From end:       ";
-				pS.Show(0);
-				cout << "\n";
-				system("pause");
+				pS.Show();
 				break;
 			}
 			
-			case 9: {
+			case '9': {
 				return 0;
 				break;
 			}

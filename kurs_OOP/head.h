@@ -25,7 +25,7 @@ private:
 public:
 	TStack();
 	void Add(int d);
-	void Show(bool flag);
+	void Show();
 	void Del(bool flag);
 };
 

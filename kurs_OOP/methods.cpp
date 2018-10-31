@@ -45,7 +45,8 @@ void TQueue::Add(int d) {
 
 void TQueue::Show() {
 	if(head) {
-		initwindow(800, 600);
+		setcolor(GREEN);
+		outtextxy(80, 23, "HEAD");
     	setcolor(RED);
 	    int x = 50, y = 50;
 	    Node *p;
@@ -67,11 +68,11 @@ void TQueue::Show() {
 		    lineto(x + 120, y + 50);
 		    
 		    x += 150;
+		    delay(500);
 	    }
 	    rectangle(x, y, x + 100, y + 50);
 	
 		setcolor(GREEN);
-		outtextxy(80, 23, "HEAD");
 	    outtextxy(x + 30, y + 60, "TAIL");
 	    
 	    
@@ -85,9 +86,10 @@ void TQueue::Show() {
 		}
 	    cout << endl;
 	    
-	    delay(1000);
+	    delay(100);
 	    system("pause");
-        closegraph();
+        setfillstyle(1, 0);
+        bar(0, 0, 800, 600);
 	}
 	else {
 		cout << "Doesn't exist\n";
@@ -131,7 +133,7 @@ void TStack::Add(int d) {
 	}
 }
 
-void TStack::Show(bool flag) {
+/*void TStack::Show(bool flag) {
 	Node *p;
 	if(flag) {
 		for(p = head; p; p = p->next) {
@@ -144,6 +146,60 @@ void TStack::Show(bool flag) {
 		}
 	}
 	cout << "\n";
+}*/
+
+void TStack::Show() {
+	if(head) {
+		setcolor(GREEN);
+		outtextxy(80, 23, "HEAD");
+    	setcolor(YELLOW);
+	    int x = 50, y = 50;
+	    Node *p;
+	    for(p = head; p->next; p = p->next) {
+		    rectangle(x, y, x + 100, y + 50);
+		
+		    moveto(x + 100, y + 10);
+		    lineto(x + 150, y + 10);
+		    moveto(x + 150, y + 10);
+		    lineto(x + 130, y);
+		    moveto(x + 150, y + 10);
+		    lineto(x + 130, y + 20);
+		    
+		    moveto(x + 100, y + 40);
+		    lineto(x + 150, y + 40);
+		    moveto(x + 100, y + 40);
+		    lineto(x + 120, y + 30);
+		    moveto(x + 100, y + 40);
+		    lineto(x + 120, y + 50);
+		    
+		    x += 150;
+		    delay(500);
+	    }
+	    rectangle(x, y, x + 100, y + 50);
+	
+		setcolor(GREEN);
+	    outtextxy(x + 30, y + 60, "TAIL");
+	    
+	    
+		cout << "From beginning: ";
+	    for(p = head; p; p = p->next) {
+		    cout << p->data << " ";
+		}
+        cout << "\nFrom end:       ";
+		for(p = tail; p; p = p->prew) {
+		    cout << p->data << " ";
+		}
+	    cout << endl;
+	    
+	    delay(100);
+	    system("pause");
+        setfillstyle(1, 0);
+        bar(0, 0, 800, 600);
+	}
+	else {
+		cout << "Doesn't exist\n";
+		system("pause");
+	}
 }
 
 void TStack::Del(bool flag) {
