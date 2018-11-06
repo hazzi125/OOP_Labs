@@ -1,15 +1,13 @@
 #include <iostream>
 #include <cstring>
+#include <graphics.h>
 #include "head.h"
 #include "methods.cpp"
 using namespace std;
 
-int main() {
-	system("color 0A");
-	int d, flag;
-	TQueue pQ;
-	TStack pS;
-	
+template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
+	T d;
+	char flag2;
 	for( ; ; ) {
 	    cout << "1. Queue\n";
 	    cout << "2. Stack\n\n";
@@ -21,102 +19,82 @@ int main() {
 	    cout << "8. Delete stack from the end\n";
 	    cout << "\n9. Exit\n\n";
 	    
-	    cin >> flag;
-	    switch(flag) {
-	    	case 1: {
+	    cin >> flag2;
+	    switch(flag2) {
+	    	case '1': {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
-	    		pQ.Add(d);
+	    		pL = &Q;
+	    		pL->Add(d);
 				break;
 			}
 			
-	    	case 2: {
+	    	case '2': {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
-	    		pS.Add(d);
+	    		pL = &S;
+	    		pL->Add(d);
 				break;
 			}
 			
-			case 3: {
+			case '3': {
 				system("cls");
-				cout << "Your queue:\n";
-				cout << "From beginning: ";
-				pQ.Show(1);
-				cout << "From end:       ";
-				pQ.Show(0);
-				cout << "\n";
-				system("pause");
+			    cout << "Your queue:\n";
+				pL = &Q;
+	    		pL->Show();
 				break;
 			}
 			
-			case 4: {
+			case '4': {
 				system("cls");
 				cout << "Your stack:\n";
-				cout << "From beginning: ";
-				pS.Show(1);
-				cout << "From end:       ";
-				pS.Show(0);
-				cout << "\n";
-				system("pause");
+				pL = &S;
+	    		pL->Show();
 				break;
 			}
 			
-			case 5: {
+			case '5': {
 				system("cls");
-				pQ.Del(1);
+				pL = &Q;
+				pL->Del(1);
 				cout << "Your headless queue:\n";
-				cout << "From beginning: ";
-				pQ.Show(1);
-				cout << "From end:       ";
-				pQ.Show(0);
+				pL->Show();
 				cout << "\n";
-				system("pause");
 				break;
 			}
 			
-			case 6: {
+			case '6': {
 				system("cls");
-				pQ.Del(0);
+				pL = &Q;
+				pL->Del(0);
 				cout << "Your tailless queue:\n";
-				cout << "From beginning: ";
-				pQ.Show(1);
-				cout << "From end:       ";
-				pQ.Show(0);
+				pL->Show();
 				cout << "\n";
-				system("pause");
 				break;
 			}
 			
-			case 7: {
+			case '7': {
 				system("cls");
-				pS.Del(1);
+				pL = &S;
+				pL->Del(1);
 				cout << "Your headless stack:\n";
-				cout << "From beginning: ";
-				pS.Show(1);
-				cout << "From end:       ";
-				pS.Show(0);
-				cout << "\n";
-				system("pause");
+				pL->Show();
 				break;
 			}
 			
-			case 8: {
+			case '8': {
 				system("cls");
-				pS.Del(0);
+				pL = &S;
+				pL->Del(1);
 				cout << "Your tailless stack:\n";
-				cout << "From beginning: ";
-				pS.Show(1);
-				cout << "From end:       ";
-				pS.Show(0);
-				cout << "\n";
-				system("pause");
+				pL->Show();
 				break;
 			}
 			
-			case 9: {
-				return 0;
+			case '9': {
+				return;
 				break;
 			}
 		}
@@ -124,7 +102,52 @@ int main() {
 	}
 }
 
-
-
-
-
+int main() {
+	system("color 0A");
+	initwindow(800, 600);
+	
+	char flag1;
+	
+	cout << "Choose your type:\n";
+	cout << "1. Int\n";
+	cout << "2. Float\n";
+	cout << "3. Double\n";
+	cout << "4. Char\n";
+	cin >> flag1;
+	system("cls");
+	
+	switch(flag1) {
+		case '1': {
+			TQueue<int> Q;
+	        TStack<int> S;
+	        TList<int> *pL;
+			Switched(Q, S, pL);
+			break;
+		}
+		
+		case '2': {
+			TQueue<float> Q;
+	        TStack<float> S;
+	        TList<float> *pL;
+			Switched(Q, S, pL);
+			break;
+		}
+		
+		case '3': {
+			TQueue<double> Q;
+	        TStack<double> S;
+	        TList<double> *pL;
+			Switched(Q, S, pL);
+			break;
+		}
+		
+		case '4': {
+			TQueue<char> Q;
+	        TStack<char> S;
+	        TList<char> *pL;
+			Switched(Q, S, pL);
+			break;
+		}
+	}
+	return 0;
+}
