@@ -4,16 +4,16 @@
 #include "head.h"
 using namespace std;
 
-TQueue::TQueue() {
+template <typename Type> TQueue<Type>::TQueue() {
 	head = tail = NULL;
 }
 
-TStack::TStack() {
+template <typename Type> TStack<Type>::TStack() {
 	head = tail = NULL;
 }
 
-void TQueue::Add(int d) {
-	Node *p = new Node;
+template <typename Type> void TQueue<Type>::Add(Type d) {
+	Node<Type> *p = new Node<Type>;
 	p->prew = p->next = NULL;
 	p->data = d;
 	
@@ -43,13 +43,13 @@ void TQueue::Add(int d) {
 	cout << "\n";
 }*/
 
-void TQueue::Show() {
+template <typename Type> void TQueue<Type>::Show() {
 	if(head) {
 		setcolor(GREEN);
 		outtextxy(80, 23, "HEAD");
     	setcolor(RED);
 	    int x = 50, y = 50;
-	    Node *p;
+	    Node<Type> *p;
 	    for(p = head; p->next; p = p->next) {
 		    rectangle(x, y, x + 100, y + 50);
 		
@@ -86,7 +86,7 @@ void TQueue::Show() {
 		}
 	    cout << endl;
 	    
-	    delay(100);
+	    //delay(100);
 	    system("pause");
         setfillstyle(1, 0);
         bar(0, 0, 800, 600);
@@ -97,8 +97,8 @@ void TQueue::Show() {
 	}
 }
 
-void TQueue::Del(bool flag) {
-	Node *p;
+template <typename Type> void TQueue<Type>::Del(bool flag) {
+	Node<Type> *p;
 	if(head == tail) {
 		p = head;
 		head = tail = NULL;
@@ -118,8 +118,8 @@ void TQueue::Del(bool flag) {
 	delete p;
 }
 
-void TStack::Add(int d) {
-	Node *p = new Node;
+template <typename Type> void TStack<Type>::Add(Type d) {
+	Node<Type> *p = new Node<Type>;
 	p->data = d;
 	p->prew = p->next = NULL;
 	if(head) {
@@ -148,13 +148,13 @@ void TStack::Add(int d) {
 	cout << "\n";
 }*/
 
-void TStack::Show() {
+template <typename Type> void TStack<Type>::Show() {
 	if(head) {
 		setcolor(GREEN);
 		outtextxy(80, 23, "HEAD");
     	setcolor(YELLOW);
 	    int x = 50, y = 50;
-	    Node *p;
+	    Node<Type> *p;
 	    for(p = head; p->next; p = p->next) {
 		    rectangle(x, y, x + 100, y + 50);
 		
@@ -191,7 +191,7 @@ void TStack::Show() {
 		}
 	    cout << endl;
 	    
-	    delay(100);
+	    //delay(100);
 	    system("pause");
         setfillstyle(1, 0);
         bar(0, 0, 800, 600);
@@ -202,8 +202,8 @@ void TStack::Show() {
 	}
 }
 
-void TStack::Del(bool flag) {
-	Node *p;
+template <typename Type> void TStack<Type>::Del(bool flag) {
+	Node<Type> *p;
 	if(head == tail) {
 		p = head;
 		head = tail = NULL;

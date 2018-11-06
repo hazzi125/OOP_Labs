@@ -4,27 +4,36 @@
 #include <cstring>
 using namespace std;
 
-struct Node {
-	int data;
+template <typename Type> struct Node {
+	Type data;
 	Node *next, *prew;
 };
 
-class TQueue {
+template <typename Type> class TList {	
+public:
+	virtual void Add(Type d) {}
+	virtual void Show() {}
+	virtual void Del(bool flag) {}
+};
+
+template <typename Type> class TQueue: public TList <Type> {
 private:
-	Node *head, *tail;
+	Node<Type> *head, *tail;
+	
 public:
 	TQueue();
-	void Add(int d);
+	void Add(Type d);
 	void Show();
 	void Del(bool flag);
 };
 
-class TStack {
+template <typename Type> class TStack: public TList <Type> {
 private:
-	Node *head, *tail;
+	Node<Type> *head, *tail;
+	
 public:
 	TStack();
-	void Add(int d);
+	void Add(Type d);
 	void Show();
 	void Del(bool flag);
 };
