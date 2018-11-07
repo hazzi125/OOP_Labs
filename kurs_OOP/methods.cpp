@@ -4,12 +4,85 @@
 #include "head.h"
 using namespace std;
 
-template <typename Type> TQueue<Type>::TQueue() {
-	head = tail = NULL;
-}
-
-template <typename Type> TStack<Type>::TStack() {
-	head = tail = NULL;
+template <typename Type> void TList<Type>::Print(int &x, int &y, bool &flag) {
+	rectangle(x, y, x + 100, y + 50);
+	if(flag) {		
+		if(x < 650) {
+			moveto(x + 100, y + 10);
+		    lineto(x + 150, y + 10);
+		    moveto(x + 150, y + 10);
+		    lineto(x + 130, y);
+		    moveto(x + 150, y + 10);
+		    lineto(x + 130, y + 20);
+			    
+		    moveto(x + 100, y + 40);
+		    lineto(x + 150, y + 40);
+		    moveto(x + 100, y + 40);
+		    lineto(x + 120, y + 30);
+		    moveto(x + 100, y + 40);
+		    lineto(x + 120, y + 50);
+		    
+		    x += 150;
+		}
+		
+		else {
+			moveto(x + 30, y + 50);
+		    lineto(x + 30, y + 100);
+		    moveto(x + 30, y + 100);
+		    lineto(x + 20, y + 80);
+		    moveto(x + 30, y + 100);
+		    lineto(x + 40, y + 80);
+		    
+		    moveto(x + 70, y + 50);
+		    lineto(x + 70, y + 100);
+		    moveto(x + 70, y + 100);
+		    lineto(x + 60, y + 80);
+		    moveto(x + 70, y + 100);
+		    lineto(x + 80, y + 80);
+		    
+		    y += 100;
+		    flag = 0;
+		}
+	}
+	
+	else {
+		if(x > 150) {
+			moveto(x, y + 10);
+		    lineto(x - 50, y + 10);
+		    moveto(x - 50, y + 10);
+		    lineto(x - 30, y);
+		    moveto(x - 50, y + 10);
+		    lineto(x - 30, y + 20);
+			    
+		    moveto(x, y + 40);
+		    lineto(x - 50, y + 40);
+		    moveto(x, y + 40);
+		    lineto(x - 20, y + 30);
+		    moveto(x, y + 40);
+		    lineto(x - 20, y + 50);
+		    
+		    x -= 150;
+		}
+		
+		else {
+			moveto(x + 30, y + 50);
+		    lineto(x + 30, y + 100);
+		    moveto(x + 30, y + 100);
+		    lineto(x + 20, y + 80);
+		    moveto(x + 30, y + 100);
+		    lineto(x + 40, y + 80);
+		    
+		    moveto(x + 70, y + 50);
+		    lineto(x + 70, y + 100);
+		    moveto(x + 70, y + 100);
+		    lineto(x + 60, y + 80);
+		    moveto(x + 70, y + 100);
+		    lineto(x + 80, y + 80);
+			
+			y += 100;
+		    flag = 1;
+		}
+	}
 }
 
 template <typename Type> void TQueue<Type>::Add(Type d) {
@@ -28,53 +101,21 @@ template <typename Type> void TQueue<Type>::Add(Type d) {
 	}
 }
 
-/*void TQueue::Show(bool flag) {
-	Node *p;
-	if(flag) {
-		for(p = head; p; p = p->next) {
-		    cout << p->data << " ";
-		}
-	}
-	else {
-		for(p = tail; p; p = p->prew) {
-		    cout << p->data << " ";
-		}
-	}
-	cout << "\n";
-}*/
-
 template <typename Type> void TQueue<Type>::Show() {
 	if(head) {
+		bool flag = 1;
 		setcolor(GREEN);
 		outtextxy(80, 23, "HEAD");
     	setcolor(RED);
 	    int x = 50, y = 50;
 	    Node<Type> *p;
 	    for(p = head; p->next; p = p->next) {
-		    rectangle(x, y, x + 100, y + 50);
-		
-		    moveto(x + 100, y + 10);
-		    lineto(x + 150, y + 10);
-		    moveto(x + 150, y + 10);
-		    lineto(x + 130, y);
-		    moveto(x + 150, y + 10);
-		    lineto(x + 130, y + 20);
-		    
-		    moveto(x + 100, y + 40);
-		    lineto(x + 150, y + 40);
-		    moveto(x + 100, y + 40);
-		    lineto(x + 120, y + 30);
-		    moveto(x + 100, y + 40);
-		    lineto(x + 120, y + 50);
-		    
-		    x += 150;
-		    delay(500);
+		    this->Print(x, y, flag);
+		    delay(300);
 	    }
 	    rectangle(x, y, x + 100, y + 50);
-	
 		setcolor(GREEN);
 	    outtextxy(x + 30, y + 60, "TAIL");
-	    
 	    
 		cout << "From beginning: ";
 	    for(p = head; p; p = p->next) {
@@ -85,8 +126,6 @@ template <typename Type> void TQueue<Type>::Show() {
 		    cout << p->data << " ";
 		}
 	    cout << endl;
-	    
-	    //delay(100);
 	    system("pause");
         setfillstyle(1, 0);
         bar(0, 0, 800, 600);
@@ -133,53 +172,21 @@ template <typename Type> void TStack<Type>::Add(Type d) {
 	}
 }
 
-/*void TStack::Show(bool flag) {
-	Node *p;
-	if(flag) {
-		for(p = head; p; p = p->next) {
-		    cout << p->data << " ";
-		}
-	}
-	else {
-		for(p = tail; p; p = p->prew) {
-		    cout << p->data << " ";
-		}
-	}
-	cout << "\n";
-}*/
-
 template <typename Type> void TStack<Type>::Show() {
 	if(head) {
+		bool flag = 1;
 		setcolor(GREEN);
 		outtextxy(80, 23, "HEAD");
     	setcolor(YELLOW);
 	    int x = 50, y = 50;
 	    Node<Type> *p;
 	    for(p = head; p->next; p = p->next) {
-		    rectangle(x, y, x + 100, y + 50);
-		
-		    moveto(x + 100, y + 10);
-		    lineto(x + 150, y + 10);
-		    moveto(x + 150, y + 10);
-		    lineto(x + 130, y);
-		    moveto(x + 150, y + 10);
-		    lineto(x + 130, y + 20);
-		    
-		    moveto(x + 100, y + 40);
-		    lineto(x + 150, y + 40);
-		    moveto(x + 100, y + 40);
-		    lineto(x + 120, y + 30);
-		    moveto(x + 100, y + 40);
-		    lineto(x + 120, y + 50);
-		    
-		    x += 150;
-		    delay(500);
+		    this->Print(x, y, flag);
+		    delay(300);
 	    }
 	    rectangle(x, y, x + 100, y + 50);
-	
 		setcolor(GREEN);
 	    outtextxy(x + 30, y + 60, "TAIL");
-	    
 	    
 		cout << "From beginning: ";
 	    for(p = head; p; p = p->next) {
@@ -189,9 +196,8 @@ template <typename Type> void TStack<Type>::Show() {
 		for(p = tail; p; p = p->prew) {
 		    cout << p->data << " ";
 		}
+		
 	    cout << endl;
-	    
-	    //delay(100);
 	    system("pause");
         setfillstyle(1, 0);
         bar(0, 0, 800, 600);

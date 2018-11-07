@@ -148,6 +148,11 @@ int main() {
 			Switched(Q, S, pL);
 			break;
 		}
+		
+		default: {
+			cout << "Sorry, buy :(\n";
+			system("pause");
+			return 0;
+		}
 	}
-	return 0;
 }

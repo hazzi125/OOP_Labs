@@ -9,34 +9,32 @@ template <typename Type> struct Node {
 	Node *next, *prew;
 };
 
-template <typename Type> class TList {	
+template <typename Type> class TList {
 public:
+	void Print(int &x, int &y, bool &flag);
 	virtual void Add(Type d) {}
 	virtual void Show() {}
 	virtual void Del(bool flag) {}
 };
 
-template <typename Type> class TQueue: public TList <Type> {
-private:
-	Node<Type> *head, *tail;
-	
+template <typename Type> class TQueue: public TList<Type> {
+private: 
+    Node<Type> *head, *tail;
 public:
-	TQueue();
+	TQueue(): head(NULL), tail(NULL) {}
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
 };
 
-template <typename Type> class TStack: public TList <Type> {
+template <typename Type> class TStack: public TList<Type> {
 private:
 	Node<Type> *head, *tail;
-	
 public:
-	TStack();
+	TStack(): head(NULL), tail(NULL) {}
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
 };
 
 #endif
-
