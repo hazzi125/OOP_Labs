@@ -218,14 +218,84 @@ template <typename Type> void TStack<Type>::Del(bool flag) {
 		if(flag) {
 			p = head;
 			head = head->next;
-			head->prew = NULL;
-			delete p;	
+			head->prew = NULL;	
 		}
 		else {
 			p = tail;
 			tail = tail->prew;
 			tail->next = NULL;
-			delete p;
 		}
 	}
+	delete p;
 }
+
+template <typename Type> void TCycle<Type>::Add(Type d) {
+	Node<Type> *p = new Node<Type>;
+	p->data = d;
+	if(head) {
+		Node<Type> *temp;
+		p->data = d;
+		temp = head->next;
+		head->next = p;
+		p->next = temp;
+		p->prew = head;
+		temp->prew = p;
+	}
+	else {
+		head = p;
+		head->next = head->prew = head;
+	}
+}
+
+template <typename Type> void TCycle<Type>::Show() {
+	if(head) {
+		Node<Type> *p;
+		p = head;
+		do {
+			cout << p->data << " ";
+			p = p->next;
+		} while(p != head);
+		cout << "\n";
+	}
+	else {
+		cout << "Doesn't exist\n";
+	}
+	system("pause");
+}
+
+template <typename Type> void TCycle<Type>::Del(bool flag) {
+	Node<Type> *temp;
+	
+	if((head) && (head != head->next)) {
+		Node<Type> *pr, *ne;
+		if(flag) {
+			temp = head;
+			ne = head->next;
+			pr = head->prew;
+			pr->next = head->next;
+			ne->prew = head->prew;
+			head = head->prew;
+		}
+		else {
+			temp = head->prew;
+			ne = temp->next;
+			pr = temp->prew;
+			pr->next = temp->next;
+			ne->prew = temp->prew;
+		}
+	}
+	else {
+		temp = head;
+		head = NULL;
+	}
+	delete temp;
+}
+
+
+
+
+
+
+
+
+

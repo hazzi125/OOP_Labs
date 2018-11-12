@@ -5,23 +5,27 @@
 #include "methods.cpp"
 using namespace std;
 
-template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
+template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TCycle<T> C, TList<T> *&pL) {
 	T d;
 	char flag2;
 	for( ; ; ) {
-	    cout << "1. Queue\n";
-	    cout << "2. Stack\n\n";
-	    cout << "3. Print queue\n";
-	    cout << "4. Print stack\n\n";
-	    cout << "5. Delete queue from the beginning\n";
-	    cout << "6. Delete queue from the end\n";
-	    cout << "7. Delete stack from the beginning\n";
-	    cout << "8. Delete stack from the end\n";
-	    cout << "\n9. Exit\n\n";
+	    cout << "a. Queue\n";
+	    cout << "b. Stack\n";
+	    cout << "c. Cycle\n\n";
+	    cout << "d. Print queue\n";
+	    cout << "e. Print stack\n";
+	    cout << "f. Print cycle\n\n";
+	    cout << "g. Delete queue from the beginning\n";
+	    cout << "h. Delete queue from the end\n\n";
+	    cout << "i. Delete stack from the beginning\n";
+	    cout << "j. Delete stack from the end\n\n";
+	    cout << "k. Delete cycle from the beginning\n";
+	    cout << "l. Delete cycle from the end\n\n";
+	    cout << "m. Exit\n\n";
 	    
 	    cin >> flag2;
 	    switch(flag2) {
-	    	case '1': {
+	    	case 'a': {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
@@ -30,7 +34,7 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
 				break;
 			}
 			
-	    	case '2': {
+	    	case 'b': {
 	    		system("cls");
 	    		cout << "Enter elem: ";
 	    		cin >> d;
@@ -39,7 +43,16 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
 				break;
 			}
 			
-			case '3': {
+			case 'c': {
+	    		system("cls");
+	    		cout << "Enter elem: ";
+	    		cin >> d;
+	    		pL = &C;
+	    		pL->Add(d);
+				break;
+			}
+			
+			case 'd': {
 				system("cls");
 			    cout << "Your queue:\n";
 				pL = &Q;
@@ -47,7 +60,7 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
 				break;
 			}
 			
-			case '4': {
+			case 'e': {
 				system("cls");
 				cout << "Your stack:\n";
 				pL = &S;
@@ -55,7 +68,15 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
 				break;
 			}
 			
-			case '5': {
+			case 'f': {
+				system("cls");
+				cout << "Your cycle:\n";
+				pL = &C;
+	    		pL->Show();
+				break;
+			}
+			
+			case 'g': {
 				system("cls");
 				pL = &Q;
 				pL->Del(1);
@@ -65,7 +86,7 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
 				break;
 			}
 			
-			case '6': {
+			case 'h': {
 				system("cls");
 				pL = &Q;
 				pL->Del(0);
@@ -75,7 +96,7 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
 				break;
 			}
 			
-			case '7': {
+			case 'i': {
 				system("cls");
 				pL = &S;
 				pL->Del(1);
@@ -84,16 +105,34 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TList<T> *&pL) {
 				break;
 			}
 			
-			case '8': {
+			case 'j': {
 				system("cls");
 				pL = &S;
-				pL->Del(1);
+				pL->Del(0);
 				cout << "Your tailless stack:\n";
 				pL->Show();
 				break;
 			}
 			
-			case '9': {
+			case 'k': {
+				system("cls");
+				pL = &C;
+				pL->Del(1);
+				cout << "Your headless cycle:\n";
+				pL->Show();
+				break;
+			}
+			
+			case 'l': {
+				system("cls");
+				pL = &C;
+				pL->Del(0);
+				cout << "Your tailless cycle:\n";
+				pL->Show();
+				break;
+			}
+			
+			case 'm': {
 				return;
 				break;
 			}
@@ -120,32 +159,36 @@ int main() {
 		case '1': {
 			TQueue<int> Q;
 	        TStack<int> S;
+	        TCycle<int> C;
 	        TList<int> *pL;
-			Switched(Q, S, pL);
+			Switched(Q, S, C, pL);
 			break;
 		}
 		
 		case '2': {
 			TQueue<float> Q;
 	        TStack<float> S;
+	        TCycle<float> C;
 	        TList<float> *pL;
-			Switched(Q, S, pL);
+			Switched(Q, S, C, pL);
 			break;
 		}
 		
 		case '3': {
 			TQueue<double> Q;
 	        TStack<double> S;
+	        TCycle<double> C;
 	        TList<double> *pL;
-			Switched(Q, S, pL);
+			Switched(Q, S, C, pL);
 			break;
 		}
 		
 		case '4': {
 			TQueue<char> Q;
 	        TStack<char> S;
+	        TCycle<char> C;
 	        TList<char> *pL;
-			Switched(Q, S, pL);
+			Switched(Q, S, C, pL);
 			break;
 		}
 		
