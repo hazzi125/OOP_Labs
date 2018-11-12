@@ -37,4 +37,14 @@ public:
 	void Del(bool flag);
 };
 
+template <typename Type> class TCycle: public TList<Type> {
+private:
+	Node<Type> *head;
+public:
+	TCycle(): head(NULL) {}
+	void Add(Type d);
+	void Show();
+	void Del(bool flag);
+};
+
 #endif
