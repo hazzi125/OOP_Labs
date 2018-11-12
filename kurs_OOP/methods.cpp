@@ -104,7 +104,7 @@ template <typename Type> void TQueue<Type>::Add(Type d) {
 template <typename Type> void TQueue<Type>::Show() {
 	if(head) {
 		bool flag = 1;
-		setcolor(GREEN);
+		setcolor(BLUE);
 		outtextxy(80, 23, "HEAD");
     	setcolor(RED);
 	    int x = 50, y = 50;
@@ -114,7 +114,7 @@ template <typename Type> void TQueue<Type>::Show() {
 		    delay(300);
 	    }
 	    rectangle(x, y, x + 100, y + 50);
-		setcolor(GREEN);
+		setcolor(BLUE);
 	    outtextxy(x + 30, y + 60, "TAIL");
 	    
 		cout << "From beginning: ";
@@ -175,7 +175,7 @@ template <typename Type> void TStack<Type>::Add(Type d) {
 template <typename Type> void TStack<Type>::Show() {
 	if(head) {
 		bool flag = 1;
-		setcolor(GREEN);
+		setcolor(BLUE);
 		outtextxy(80, 23, "HEAD");
     	setcolor(YELLOW);
 	    int x = 50, y = 50;
@@ -185,7 +185,7 @@ template <typename Type> void TStack<Type>::Show() {
 		    delay(300);
 	    }
 	    rectangle(x, y, x + 100, y + 50);
-		setcolor(GREEN);
+		setcolor(BLUE);
 	    outtextxy(x + 30, y + 60, "TAIL");
 	    
 		cout << "From beginning: ";
@@ -249,7 +249,71 @@ template <typename Type> void TCycle<Type>::Add(Type d) {
 
 template <typename Type> void TCycle<Type>::Show() {
 	if(head) {
-		Node<Type> *p;
+		int k = 0;
+		bool flag = 1;
+		setcolor(BLUE);
+		outtextxy(80, 23, "HEAD");
+    	setcolor(GREEN);
+	    int x = 50, y = 50;
+	    Node<Type> *p;
+	    p = head;
+	    do {
+		    this->Print(x, y, flag);
+		    p = p->next;
+		    k++;
+		    delay(300);
+	    } while(p != head);
+	    
+	    if((k % 5) != 0) {
+		    if(flag) {
+		    	moveto(x, y + 10);
+		    	lineto(x, y + 100);
+		    	
+		    	moveto(x, y + 100);
+		    	lineto(10, y + 100);
+		    	
+		    	moveto(10, y + 100);
+		    	lineto(10, 60);
+			}
+			
+			else {
+				moveto(x + 100, y + 10);
+		    	lineto(10, y + 10);
+		    	
+		    	moveto(x + 100, y + 40);
+		    	lineto(10, y + 40);
+		    	
+		    	moveto(10, y + 40);
+		    	lineto(10, 60);
+			}
+		}
+		
+		else {
+			moveto(x + 70, y);
+		    lineto(10, y);
+		    
+		    moveto(10, y);
+		    lineto(10, 60);
+		}
+		
+	    moveto(10, 60);
+	    lineto(50, 60);
+	    	
+	    moveto(10, 90);
+	    lineto(50, 90);
+	    	
+		moveto(50, 60);
+		lineto(30, 50);
+	    	
+	    moveto(50, 60);
+	    lineto(30, 70);
+	    	
+	    moveto(10, 90);
+	    lineto(30, 80);
+	    	
+	    moveto(10, 90);
+	    lineto(30, 100);
+	    
 		p = head;
 		do {
 			cout << p->data << " ";
@@ -261,6 +325,8 @@ template <typename Type> void TCycle<Type>::Show() {
 		cout << "Doesn't exist\n";
 	}
 	system("pause");
+	setfillstyle(1, 0);
+    bar(0, 0, 800, 600);
 }
 
 template <typename Type> void TCycle<Type>::Del(bool flag) {

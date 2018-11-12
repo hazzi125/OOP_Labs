@@ -9,6 +9,7 @@ template <typename T> void Switched(TQueue<T> Q, TStack<T> S, TCycle<T> C, TList
 	T d;
 	char flag2;
 	for( ; ; ) {
+		cout << "Choose your action:\n\n";
 	    cout << "a. Queue\n";
 	    cout << "b. Stack\n";
 	    cout << "c. Cycle\n\n";
@@ -147,7 +148,7 @@ int main() {
 	
 	char flag1;
 	
-	cout << "Choose your type:\n";
+	cout << "Choose your type:\n\n";
 	cout << "1. Int\n";
 	cout << "2. Float\n";
 	cout << "3. Double\n";
