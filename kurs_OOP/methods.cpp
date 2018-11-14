@@ -1,10 +1,31 @@
 #include <iostream>
 #include <cstring>
+#include <typeinfo>
 #include <graphics.h>
 #include "head.h"
 using namespace std;
 
-template <typename Type> void TList<Type>::Print(int &x, int &y, bool &flag) {
+template <typename Type> void TList<Type>::Print(int &x, int &y, bool &flag, Node<Type> *&p, int color) {
+	if(typeid(Type) == typeid(int)) {
+		char s[10];
+		itoa(p->data, s, 10);
+		setcolor(WHITE);
+	    outtextxy(x + 10, y + 10, s);
+	}
+	else if((typeid(Type) == typeid(float)) || (typeid(Type) == typeid(double))) {
+		char s[30];
+		gcvt(p->data, 7, s);
+		setcolor(WHITE);
+	    outtextxy(x + 10, y + 10, s);
+	}
+	else if(typeid(Type) == typeid(char)){
+		char *s = new char;
+		*s = p->data;
+		setcolor(WHITE);
+	    outtextxy(x + 30, y + 10, s);
+	}
+	
+	setcolor(color);
 	rectangle(x, y, x + 100, y + 50);
 	if(flag) {		
 		if(x < 650) {
@@ -106,16 +127,36 @@ template <typename Type> void TQueue<Type>::Show() {
 		bool flag = 1;
 		setcolor(BLUE);
 		outtextxy(80, 23, "HEAD");
-    	setcolor(RED);
 	    int x = 50, y = 50;
 	    Node<Type> *p;
 	    for(p = head; p->next; p = p->next) {
-		    this->Print(x, y, flag);
+		    this->Print(x, y, flag, p, RED);
 		    delay(300);
 	    }
+	    setcolor(RED);
 	    rectangle(x, y, x + 100, y + 50);
 		setcolor(BLUE);
 	    outtextxy(x + 30, y + 60, "TAIL");
+	    
+	    if(typeid(Type) == typeid(int)) {
+			char s[10];
+			itoa(tail->data, s, 10);
+			setcolor(WHITE);
+		    outtextxy(x + 10, y + 10, s);
+		}
+		
+		else if((typeid(Type) == typeid(float)) || (typeid(Type) == typeid(double))) {
+			char s[30];
+			gcvt(tail->data, 10, s);
+			setcolor(WHITE);
+		    outtextxy(x + 10, y + 10, s);
+		}
+		else if(typeid(Type) == typeid(char)){
+			char *s = new char;
+			*s = tail->data;
+			setcolor(WHITE);
+		    outtextxy(x + 30, y + 10, s);
+		}
 	    
 		cout << "From beginning: ";
 	    for(p = head; p; p = p->next) {
@@ -177,17 +218,35 @@ template <typename Type> void TStack<Type>::Show() {
 		bool flag = 1;
 		setcolor(BLUE);
 		outtextxy(80, 23, "HEAD");
-    	setcolor(YELLOW);
 	    int x = 50, y = 50;
 	    Node<Type> *p;
 	    for(p = head; p->next; p = p->next) {
-		    this->Print(x, y, flag);
+		    this->Print(x, y, flag, p, YELLOW);
 		    delay(300);
 	    }
+	    setcolor(YELLOW);
 	    rectangle(x, y, x + 100, y + 50);
 		setcolor(BLUE);
 	    outtextxy(x + 30, y + 60, "TAIL");
 	    
+	    if(typeid(Type) == typeid(int)) {
+			char s[10];
+			itoa(tail->data, s, 10);
+			setcolor(WHITE);
+		    outtextxy(x + 10, y + 10, s);
+		}
+		else if((typeid(Type) == typeid(float)) || (typeid(Type) == typeid(double))) {
+			char s[30];
+			gcvt(tail->data, 10, s);
+			setcolor(WHITE);
+		    outtextxy(x + 10, y + 10, s);
+		}
+	    else if(typeid(Type) == typeid(char)){
+			char *s = new char;
+			*s = tail->data;
+			setcolor(WHITE);
+		    outtextxy(x + 30, y + 10, s);
+		}
 		cout << "From beginning: ";
 	    for(p = head; p; p = p->next) {
 		    cout << p->data << " ";
@@ -258,7 +317,7 @@ template <typename Type> void TCycle<Type>::Show() {
 	    Node<Type> *p;
 	    p = head;
 	    do {
-		    this->Print(x, y, flag);
+		    this->Print(x, y, flag, p, GREEN);
 		    p = p->next;
 		    k++;
 		    delay(300);
@@ -356,12 +415,3 @@ template <typename Type> void TCycle<Type>::Del(bool flag) {
 	}
 	delete temp;
 }
-
-
-
-
-
-
-
-
-

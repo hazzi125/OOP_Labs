@@ -11,7 +11,7 @@ template <typename Type> struct Node {
 
 template <typename Type> class TList {
 public:
-	void Print(int &x, int &y, bool &flag);
+	void Print(int &x, int &y, bool &flag, Node<Type> *&p, int color);
 	virtual void Add(Type d) {}
 	virtual void Show() {}
 	virtual void Del(bool flag) {}
