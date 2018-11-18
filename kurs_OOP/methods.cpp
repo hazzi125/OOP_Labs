@@ -12,7 +12,7 @@ template <typename Type> void TList<Type>::Print(int &x, int &y, bool &flag, Nod
 		setcolor(WHITE);
 	    outtextxy(x + 10, y + 10, s);
 	}
-	else if((typeid(Type) == typeid(float)) || (typeid(Type) == typeid(double))) {
+	else if(typeid(Type) == typeid(float)) {
 		char s[30];
 		gcvt(p->data, 7, s);
 		setcolor(WHITE);
@@ -134,9 +134,9 @@ template <typename Type> void TQueue<Type>::Show() {
 		    delay(300);
 	    }
 	    setcolor(RED);
-	    rectangle(x, y, x + 100, y + 50);
+	    rectangle(x, y, x + 110, y + 50);
 		setcolor(BLUE);
-	    outtextxy(x + 30, y + 60, "TAIL");
+	    outtextxy(x + 35, y + 60, "TAIL");
 	    
 	    if(typeid(Type) == typeid(int)) {
 			char s[10];
@@ -145,11 +145,11 @@ template <typename Type> void TQueue<Type>::Show() {
 		    outtextxy(x + 10, y + 10, s);
 		}
 		
-		else if((typeid(Type) == typeid(float)) || (typeid(Type) == typeid(double))) {
+		else if(typeid(Type) == typeid(float)) {
 			char s[30];
 			gcvt(tail->data, 10, s);
 			setcolor(WHITE);
-		    outtextxy(x + 10, y + 10, s);
+		    outtextxy(x + 3, y + 10, s);
 		}
 		else if(typeid(Type) == typeid(char)){
 			char *s = new char;
@@ -225,9 +225,9 @@ template <typename Type> void TStack<Type>::Show() {
 		    delay(300);
 	    }
 	    setcolor(YELLOW);
-	    rectangle(x, y, x + 100, y + 50);
+	    rectangle(x, y, x + 110, y + 50);
 		setcolor(BLUE);
-	    outtextxy(x + 30, y + 60, "TAIL");
+	    outtextxy(x + 35, y + 60, "TAIL");
 	    
 	    if(typeid(Type) == typeid(int)) {
 			char s[10];
@@ -235,11 +235,11 @@ template <typename Type> void TStack<Type>::Show() {
 			setcolor(WHITE);
 		    outtextxy(x + 10, y + 10, s);
 		}
-		else if((typeid(Type) == typeid(float)) || (typeid(Type) == typeid(double))) {
+		else if(typeid(Type) == typeid(float)) {
 			char s[30];
 			gcvt(tail->data, 10, s);
 			setcolor(WHITE);
-		    outtextxy(x + 10, y + 10, s);
+		    outtextxy(x + 3, y + 10, s);
 		}
 	    else if(typeid(Type) == typeid(char)){
 			char *s = new char;
@@ -414,4 +414,22 @@ template <typename Type> void TCycle<Type>::Del(bool flag) {
 		head = NULL;
 	}
 	delete temp;
+}
+
+template <typename Type> TQueue<Type>::TQueue(Type d) {
+	head = tail = NULL;
+	for(int i = 0; i < 10; i++)
+	    this->Add(d);
+}
+
+template <typename Type> TStack<Type>::TStack(Type d) {
+	head = tail = NULL;
+	for(int i = 0; i < 10; i++)
+	    this->Add(d);
+}
+
+template <typename Type> TCycle<Type>::TCycle(Type d) {
+	head = NULL;
+	for(int i = 0; i < 10; i++)
+	    this->Add(d);
 }

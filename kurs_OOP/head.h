@@ -22,6 +22,7 @@ private:
     Node<Type> *head, *tail;
 public:
 	TQueue(): head(NULL), tail(NULL) {}
+	TQueue(Type d);
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
@@ -32,6 +33,7 @@ private:
 	Node<Type> *head, *tail;
 public:
 	TStack(): head(NULL), tail(NULL) {}
+	TStack(Type d);
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
@@ -42,6 +44,7 @@ private:
 	Node<Type> *head;
 public:
 	TCycle(): head(NULL) {}
+	TCycle(Type d);
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
