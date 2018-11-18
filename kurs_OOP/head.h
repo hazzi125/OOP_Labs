@@ -11,7 +11,7 @@ template <typename Type> struct Node {
 
 template <typename Type> class TList {
 public:
-	void Print(int &x, int &y, bool &flag);
+	void Print(int &x, int &y, bool &flag, Node<Type> *&p, int color);
 	virtual void Add(Type d) {}
 	virtual void Show() {}
 	virtual void Del(bool flag) {}
@@ -22,6 +22,7 @@ private:
     Node<Type> *head, *tail;
 public:
 	TQueue(): head(NULL), tail(NULL) {}
+	TQueue(Type d);
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
@@ -32,6 +33,7 @@ private:
 	Node<Type> *head, *tail;
 public:
 	TStack(): head(NULL), tail(NULL) {}
+	TStack(Type d);
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
@@ -42,6 +44,7 @@ private:
 	Node<Type> *head;
 public:
 	TCycle(): head(NULL) {}
+	TCycle(Type d);
 	void Add(Type d);
 	void Show();
 	void Del(bool flag);
