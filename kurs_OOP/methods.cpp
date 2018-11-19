@@ -134,9 +134,9 @@ template <typename Type> void TQueue<Type>::Show() {
 		    delay(300);
 	    }
 	    setcolor(RED);
-	    rectangle(x, y, x + 110, y + 50);
+	    rectangle(x, y, x + 100, y + 50);
 		setcolor(BLUE);
-	    outtextxy(x + 35, y + 60, "TAIL");
+	    outtextxy(x + 30, y + 60, "TAIL");
 	    
 	    if(typeid(Type) == typeid(int)) {
 			char s[10];
@@ -147,9 +147,9 @@ template <typename Type> void TQueue<Type>::Show() {
 		
 		else if(typeid(Type) == typeid(float)) {
 			char s[30];
-			gcvt(tail->data, 10, s);
+			gcvt(tail->data, 7, s);
 			setcolor(WHITE);
-		    outtextxy(x + 3, y + 10, s);
+		    outtextxy(x + 10, y + 10, s);
 		}
 		else if(typeid(Type) == typeid(char)){
 			char *s = new char;
@@ -160,11 +160,11 @@ template <typename Type> void TQueue<Type>::Show() {
 	    
 		cout << "From beginning: ";
 	    for(p = head; p; p = p->next) {
-		    cout << p->data << " ";
+		    cout << p->data << " | ";
 		}
         cout << "\nFrom end:       ";
 		for(p = tail; p; p = p->prew) {
-		    cout << p->data << " ";
+		    cout << p->data << " | ";
 		}
 	    cout << endl;
 	    system("pause");
@@ -225,9 +225,9 @@ template <typename Type> void TStack<Type>::Show() {
 		    delay(300);
 	    }
 	    setcolor(YELLOW);
-	    rectangle(x, y, x + 110, y + 50);
+	    rectangle(x, y, x + 100, y + 50);
 		setcolor(BLUE);
-	    outtextxy(x + 35, y + 60, "TAIL");
+	    outtextxy(x + 30, y + 60, "TAIL");
 	    
 	    if(typeid(Type) == typeid(int)) {
 			char s[10];
@@ -237,9 +237,9 @@ template <typename Type> void TStack<Type>::Show() {
 		}
 		else if(typeid(Type) == typeid(float)) {
 			char s[30];
-			gcvt(tail->data, 10, s);
+			gcvt(tail->data, 7, s);
 			setcolor(WHITE);
-		    outtextxy(x + 3, y + 10, s);
+		    outtextxy(x + 10, y + 10, s);
 		}
 	    else if(typeid(Type) == typeid(char)){
 			char *s = new char;
@@ -249,11 +249,11 @@ template <typename Type> void TStack<Type>::Show() {
 		}
 		cout << "From beginning: ";
 	    for(p = head; p; p = p->next) {
-		    cout << p->data << " ";
+		    cout << p->data << " | ";
 		}
         cout << "\nFrom end:       ";
 		for(p = tail; p; p = p->prew) {
-		    cout << p->data << " ";
+		    cout << p->data << " | ";
 		}
 		
 	    cout << endl;
@@ -293,7 +293,6 @@ template <typename Type> void TCycle<Type>::Add(Type d) {
 	p->data = d;
 	if(head) {
 		Node<Type> *temp;
-		p->data = d;
 		temp = head->next;
 		head->next = p;
 		p->next = temp;
@@ -375,7 +374,7 @@ template <typename Type> void TCycle<Type>::Show() {
 	    
 		p = head;
 		do {
-			cout << p->data << " ";
+			cout << p->data << " | ";
 			p = p->next;
 		} while(p != head);
 		cout << "\n";
@@ -399,7 +398,7 @@ template <typename Type> void TCycle<Type>::Del(bool flag) {
 			pr = head->prew;
 			pr->next = head->next;
 			ne->prew = head->prew;
-			head = head->prew;
+			head = head->next;
 		}
 		else {
 			temp = head->prew;
